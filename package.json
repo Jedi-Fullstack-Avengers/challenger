@@ -1,0 +1,16 @@
+{
+  "name": "node-sandbox",
+  "version": "1.0.0",
+  "description": "Simple Node Sandbox",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "1.18.4",
+    "chalk": "^2.4.2",
+    "perf_hooks": "0.0.1",
+    "ramda": "^0.26.1"
+  }
+}
