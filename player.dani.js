@@ -93,7 +93,7 @@ module.exports = {
   },
 
   delivery: {
-    directions = s => {
+    directions: s => {
       const route = ["0,0"];
       let routeX = 0;
       let routeY = 0;
@@ -115,34 +115,34 @@ module.exports = {
           y: 0
         }
       };
-    
+
       for (let i = 0; i < s.length; i++) {
         const direction = s[i];
         routeX += directionValues[direction].x;
         routeY += directionValues[direction].y;
         route.push(routeX + "," + routeY);
       }
-    
+
       return Array.from(new Set(route)).length;
-    };
-    
-    directions2 = s => {
+    },
+
+    directions2: s => {
       const route = ["0,0"];
       let routeX = 0;
       let routeY = 0;
-    
+
       for (let i = 0; i < s.length; i++) {
         const direction = s[i];
-    
+
         if (direction === "^") routeY--;
         else if (direction === ">") routeX++;
         else if (direction === "v") routeY++;
         else routeX--;
-    
+
         route.push(routeX + "," + routeY);
       }
-    
+
       return Array.from(new Set(route)).length;
-    };
+    }
   }
 };
