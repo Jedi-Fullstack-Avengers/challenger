@@ -80,6 +80,18 @@ module.exports = {
     }
   },
 
+  niceString: {
+    funcional: entrada => {
+      return entrada
+        .filter(element => /([a-z])\1/.exec(element) !== null)
+        .filter(
+          element =>
+            /(.*)[aeiou](.*)[aeiou](.*)[aeiou](.*)/.exec(element) !== null
+        )
+        .filter(element => /(ab)|(cd)|(pq)|(xy)/.exec(element) === null).length;
+    }
+  },
+
   present: {
     functional: input => {
       return input.reduce((acc, curr) => {

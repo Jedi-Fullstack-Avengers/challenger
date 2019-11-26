@@ -144,5 +144,51 @@ module.exports = {
 
       return Array.from(new Set(route)).length;
     }
+  },
+  niceString: {
+    niceString: a => {
+      const excluded = ["ab", "cd", "pq", "xy"];
+      const vowels = ["a", "e", "i", "o", "u"];
+      let niceStrings = 0;
+
+      for (let i = 0; i < a.length; i++) {
+        const element = a[i];
+        let isExcluded = false;
+
+        for (let j = 0; j < excluded.length; j++) {
+          const excludedElement = excluded[j];
+          if (element.includes(excludedElement)) {
+            isExcluded = true;
+            break;
+          }
+        }
+
+        if (!isExcluded) {
+          let countVowels = 0;
+          let pastCharacter = "";
+          let doubleVowels = false;
+          for (let j = 0; j < element.length; j++) {
+            const character = element[j];
+
+            if (!doubleVowels) {
+              if (character === pastCharacter) {
+                doubleVowels = true;
+              }
+              pastCharacter = character;
+            }
+
+            if (vowels.includes(character)) {
+              countVowels++;
+            }
+          }
+
+          if (countVowels >= 3 && doubleVowels) {
+            niceStrings++;
+          }
+        }
+      }
+
+      return niceStrings;
+    }
   }
 };
