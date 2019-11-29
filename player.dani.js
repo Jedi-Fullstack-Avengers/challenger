@@ -146,49 +146,39 @@ module.exports = {
     }
   },
   niceString: {
-    niceString: a => {
-      const excluded = ["ab", "cd", "pq", "xy"];
-      const vowels = ["a", "e", "i", "o", "u"];
-      let niceStrings = 0;
-
-      for (let i = 0; i < a.length; i++) {
-        const element = a[i];
-        let isExcluded = false;
-
-        for (let j = 0; j < excluded.length; j++) {
-          const excludedElement = excluded[j];
-          if (element.includes(excludedElement)) {
-            isExcluded = true;
-            break;
-          }
-        }
-
-        if (!isExcluded) {
-          let countVowels = 0;
-          let pastCharacter = "";
-          let doubleVowels = false;
-          for (let j = 0; j < element.length; j++) {
-            const character = element[j];
-
-            if (!doubleVowels) {
-              if (character === pastCharacter) {
-                doubleVowels = true;
-              }
-              pastCharacter = character;
+    niceString: b => {
+      let a = 0;
+      for (let c = 0; c < b.length; c++) {
+        const d = b[c],
+          e =
+            -1 < d.indexOf("ab") ||
+            -1 < d.indexOf("cd") ||
+            -1 < d.indexOf("pq") ||
+            -1 < d.indexOf("xy");
+        if (!e) {
+          let b = 0,
+            c = "",
+            e = !1;
+          for (let f = 0; f < d.length; f++) {
+            const g = d[f];
+            if (
+              (e || ((e = g === c), (c = g)),
+              3 > b &&
+                ("a" === g ||
+                  "e" === g ||
+                  "i" === g ||
+                  "o" === g ||
+                  "u" === g) &&
+                b++,
+              e && 3 <= b)
+            ) {
+              a++;
+              break;
             }
-
-            if (vowels.includes(character)) {
-              countVowels++;
-            }
-          }
-
-          if (countVowels >= 3 && doubleVowels) {
-            niceStrings++;
           }
         }
       }
-
-      return niceStrings;
+      return a;
     }
   }
 };
